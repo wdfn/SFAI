@@ -13,9 +13,11 @@ class Submission(models.Model):
 	submission_date = models.DateTimeField('date submitted')
 	#add the database interaction stuff here 
 
-class Events(models.Model):
+class Event(models.Model):
 	event_name = models.CharField(max_length=200)
 	event_description = models.CharField(max_length=1000)
+	exhibition_date = models.DateTimeField('exhibition date')
+	deadline_date = models.DateTimeField('deadline date')
 	num_submissions = 0
 	max_num_submissions = models.IntegerField(default=1000)
 	
