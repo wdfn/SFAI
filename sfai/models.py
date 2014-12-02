@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 import datetime
 
 class Student(models.Model):
@@ -9,13 +10,13 @@ class Student(models.Model):
 		return self.first_name + self.last_name
 
 class Submission(models.Model):
+
 	# student = models.ForeignKey(Student)
     username = models.CharField(max_length=400)
     name = models.CharField(max_length=1000)
     avatar_url = models.CharField(max_length=500)
     submission_date = datetime.datetime.now()
-    print submission_date
-	#add the database interaction stuff here 
+
 
 class Event(models.Model):
 	event_name = models.CharField(max_length=200)
