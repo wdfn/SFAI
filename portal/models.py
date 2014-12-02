@@ -1,5 +1,4 @@
 from django.db import models
-from django.forms import ModelForm
 from django import forms
 
 class Student(models.Model):
@@ -12,7 +11,7 @@ class Student(models.Model):
 class Submission(models.Model):
 	student = models.ForeignKey(Student)
 	description = models.CharField(max_length=1000)
-    attachment = forms.FileField()
+    attachment = models.FileField(upload_to='documents/%Y/%m/%d')
 	submission_date = models.DateTimeField('date submitted')
 	#add the database interaction stuff here 
 
@@ -35,8 +34,8 @@ class Event(models.Model):
 			return False
 
 
-class SubmissionForm(ModelForm):
-    class Meta:
-        model = Submission
-        fields = '__all__'
+class SubmissionForm(forms.Form):
+    attachment = forms.FileField(
+        label = 'attach a file'
+    )
     

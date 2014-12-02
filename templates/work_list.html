@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Submissions</title>   
+    </head>
+    <body>
+    <!-- List of uploaded attachments -->
+    {% if attachments %}
+        <ul>
+        {% for submission in submissions %}
+            <li><a href="{{ submission.attachment.url }}">{{ submission.attachment.name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No submissions yet.</p>
+    {% endif %}
+	
+        <form action="{% url 'list' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            <p>{{ form.docfile.label_tag }} {{ form.docfile.help_text }}</p>
+            <p>
+                {{ form.docfile.errors }}
+                {{ form.docfile }}
+            </p>
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+    </body>
+</html> 
