@@ -1,0 +1,22 @@
+body {
+    background-color: #2E2E2E;
+    color: white;
+    position: absolute;
+    top: 50px;
+    left:15px;
+
+}
+
+.form-control {
+    width: 300px;
+}
+
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sub-header {
+    width: 50%;
+}
