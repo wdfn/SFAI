@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render_to_response, render
 import datetime
 from django.http import HttpResponse
 from django.template import RequestContext, loader
@@ -19,10 +19,9 @@ def submitted(request):
     s.file_url = request.POST['avatar_url']
     s.submission_date = datetime.datetime.now()
     s.save()
+    submissions = Submission.objects.all()
     if request.method == 'POST':
         print "post"
-        print Submission.objects.all()
     else:
         print "get"
-        print Submission.objects.all()
-    return render(request, 'submit_forms.html')
+    return render(request, 'submit_forms.html', {'submissions': submissions})
